@@ -9,23 +9,30 @@ import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 
-class MySurfaceView(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs), SurfaceHolder.Callback {
+class MySurfaceView(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs) ,SurfaceHolder.Callback{
     lateinit var surfaceHolder: SurfaceHolder
     lateinit var BG: Bitmap
+
+
     init {
         surfaceHolder = getHolder()
         BG = BitmapFactory.decodeResource(getResources(), R.drawable.img)
         surfaceHolder.addCallback(this)
     }
+
+
     override fun surfaceCreated(p0: SurfaceHolder) {
         var canvas: Canvas = surfaceHolder.lockCanvas()
         drawSomething(canvas)
         surfaceHolder.unlockCanvasAndPost(canvas)
-        //TODO("Not yet implemented")
+
     }
+
     var BGmoveX:Int = 0
     fun drawSomething(canvas:Canvas) {
+        canvas.drawBitmap(BG, 0f, 0f, null)
         //canvas.drawBitmap(BG, 0f, 0f, null)
+        //背景往左
         BGmoveX --
         var BGnewX:Int = BG.width + BGmoveX
         // 如果已捲動整張圖，則重新開始

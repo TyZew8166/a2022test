@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">a2022 test</string>
+    <string name="name">射擊遊戲(作者:柯廷翰)</string>
+    <string name="柯廷翰">name</string>
+    <string name="a">柯廷翰</string>
 </resources>
