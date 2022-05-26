@@ -5,9 +5,13 @@ import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
 import kotlinx.coroutines.*
 import kotlinx.android.synthetic.main.activity_main.*
 import tw.edu.pu.csim.s1091802.a2022test.databinding.ActivityMainBinding
+
+@GlideModule public final class MyAppGlideModule : AppGlideModule()
 
 class MainActivity : AppCompatActivity(){
 
@@ -18,7 +22,14 @@ class MainActivity : AppCompatActivity(){
         lateinit var job: Job
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setContentView(R.layout.activity_main)
+
+        GlideApp.with(this)
+            .load(R.drawable.p1)
+            .circleCrop()
+            .override(800, 600)
+            .into(img2)
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -60,6 +71,3 @@ class MainActivity : AppCompatActivity(){
 
 
 }
-
-
-
